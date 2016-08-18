@@ -1,0 +1,19 @@
+scala install: 저는 2.10.6으로 설치하였습니다.
+https://gist.github.com/osipov/c2a34884a647c29765ed
+
+spark install: (spark1.6.1 Prebuild for Hadoop2.6)
+bash_profile 수정필 (62/63서버의 bash_profile 참조)
+http://spark.apache.org/downloads.html
+
+spark cluster setup: 
+http://spark.apache.org/docs/latest/spark-standalone.html#cluster-launch-scripts
+spark-env.sh 수정
+slave 파일 작성
+log4j~ 파일 수정
+
+spark cluster mode start: (webUI: master_server_id:8080, http://10.202.34.62:8082)
+/path/to/spark_home/sbin/start-all.sh
+
+Hadoop install: (spark는 기본으로 hadoop 바이너리를 포함하지만 hdfs를 쓰기위해 설치했습니다.)
+hadoop2.6.0으로 설치 및 실행 (WebUI: http://hdfs_url:50070)
+http://thepowerofdata.io/setting-up-a-apache-hadoop-2-7-single-node-on-ubuntu-14-04/
