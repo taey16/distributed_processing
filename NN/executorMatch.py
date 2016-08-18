@@ -30,7 +30,7 @@ headers = {'User-Agent':
 requestPrefix = \
   'http://%s:%d/request_handler?url=http://%s&%s&is_browser=0'
 
-daemonConfig = {'host': ['10.202.34.211', '10.202.35.109'],
+daemonConfig = {'host': ['url', 'url'],
                 'port': [8081, 7081]}
 
 signatureDim = 832 * 9 / 64 + 1024 / 64
@@ -143,8 +143,8 @@ def runApp(sc, sqlSC, daemonConfig, numPartitions=8):
   # code-fragment for calling demon_11st
   inputDF = sqlSC.read\
                  .format('jdbc')\
-                 .options(url='jdbc:mysql://10.202.35.109:3306/PBrain?user=taey16&password=Skp02596',
-                          dbtable=u'(select __org_img_url__, __lctgr_nm__, __mctgr_nm__, __sctgr_nm__ from 11st_fashion_all_7M limit 800000) df',
+                 .options(url='jdbc:mysql://url:3306/dbname?user=oops&password=oops',
+                          dbtable=u'(select __org_img_url__, __lctgr_nm__, __mctgr_nm__, __sctgr_nm__ from __7M limit 800000) df',
                           driver='com.mysql.jdbc.Driver')\
                  .load()\
                  .collect()
@@ -156,16 +156,16 @@ def runApp(sc, sqlSC, daemonConfig, numPartitions=8):
 
   outputRDD = inputRDD.map(process)\
                       .filter(lambda x: x <> None)
-  outputRDD.saveAsTextFile('hdfs://10.202.34.62:9000/11st_fashion_all_7M_feature')
-  #outputRDD.toDF().write.format('json').save('hdfs://10.202.34.62:9000/11st_fashion_all_7M_feature')
+  outputRDD.saveAsTextFile('hdfs://url:9000/11st_fashion_all_7M_feature')
+  #outputRDD.toDF().write.format('json').save('hdfs://url:9000/11st_fashion_all_7M_feature')
   print 'Feature Extraction Finished...'
   """
 
   # code-fragment for exact NN matching
 
   # load json files
-  #inputJSONFilePath = 'hdfs://10.202.34.62:9000/11st_fashion_all_7M_feature/'
-  inputJSONFilePath = 'hdfs://10.202.34.62:9000/11st_fashion_all_240K_feature/'
+  #inputJSONFilePath = 'hdfs://url:9000/all_7M_feature/'
+  inputJSONFilePath = 'hdfs://url:9000/all_240K_feature/'
   inputJSONRDD = sc.textFile(inputJSONFilePath).map(json.loads)
 
   # extract feature-vector only
