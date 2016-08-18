@@ -25,7 +25,7 @@ headers = {'User-Agent':
 requestPrefix = \
   'http://%s:%d/request_handler?url=http://%s&%s&is_browser=0'
 
-daemonConfig = {'host': ['10.202.34.211', '10.202.35.109'],
+daemonConfig = {'host': ['url', 'url'],
                 'port': [8081, 7081]}
 
 # FIXME: take care of # of dimension for each feature-vector
