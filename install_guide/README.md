@@ -10,7 +10,6 @@
 - bash_profile 수정필요 (62/63서버의 bash_profile 참조)
 
 # Spark cluster setup:
-- 현재 10.202.34.62/10.202.34.63 서버의 /home/taey16/spark-1.6.1-bin-hadoop2.6/conf 파일 참조
 - Ref: http://spark.apache.org/docs/latest/spark-standalone.html#cluster-launch-scripts
 - `spark-env.sh` 수정
 - `slave` 파일 작성
